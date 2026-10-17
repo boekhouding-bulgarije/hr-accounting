@@ -314,7 +314,7 @@ translate('en');
 })();</script>
 
 <script>
-  /*
+/*
 Script written by Marc on 17/10/2026
 
 Purpose:
@@ -332,27 +332,54 @@ directly to the appropriate section of the landing page.
 
 This increases the website's external visibility and gives
 the main services page greater exposure through relevant links.
-*/ 
+*/
 (function () {
   var params = new URLSearchParams(location.search);
-  var wanted = (params.get('lang') || '').toLowerCase();
+  var wanted = (params.get('lang') || '').trim().toLowerCase();
   var select = document.getElementById('site-language');
   if (!select) return;
 
-  var supported = Array.prototype.map.call(select.options, function (o) { return o.value; });
+  var supported = Array.prototype.map.call(select.options, function (o) {
+    return o.value;
+  });
+
+  // Close the mobile (hamburger) menu, using the same elements the page already uses.
+  // The page itself only closes the menu when a link is clicked, not when a
+  // language is chosen, so we do it here after the translation has been applied.
+  function closeMobileMenu() {
+    var nav = document.querySelector('.nav-links');
+    var toggle = document.querySelector('.mobile-toggle');
+
+    if (nav && toggle && nav.classList.contains('open')) {
+      toggle.click();
+    }
+  }
 
   // 1. Apply the language from ?lang=xx (en, nl, fr, el, bg)
-  if (wanted && supported.indexOf(wanted) !== -1) {
-    select.value = wanted;
+  var match = supported.filter(function (optionValue) {
+    return optionValue.toLowerCase() === wanted;
+  })[0];
+
+  if (wanted && match) {
+    select.value = match;
     select.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
   // 2. Re-scroll to the #section after translation has changed the layout
   function scrollToHash() {
     if (!location.hash) return;
-    var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+
+    var id;
+    try {
+      id = decodeURIComponent(location.hash.slice(1));
+    } catch (error) {
+      id = location.hash.slice(1);
+    }
+
+    var target = document.getElementById(id);
     if (target) target.scrollIntoView();
   }
+
   scrollToHash();
   window.addEventListener('load', scrollToHash);
   setTimeout(scrollToHash, 300);
@@ -363,6 +390,12 @@ the main services page greater exposure through relevant links.
     var url = new URL(location.href);
     url.searchParams.set('lang', select.value);
     history.replaceState(null, '', url);
+
+    // Let the page's translation handler finish, then close the hamburger menu.
+    setTimeout(closeMobileMenu, 0);
+
+    // Re-scroll in case the translated text changed the layout.
+    setTimeout(scrollToHash, 300);
   });
 })();
 </script>
