@@ -253,7 +253,31 @@
 </main>
 <footer><div class="wrap footer-inner"><div class="footer-brand">Hristozov Accounting<small>Accounting services operated by DIGITAL PROMOTION LTD · UIC 205368691 · Sandanski, Bulgaria</small></div><div class="footer-links"><a data-i18n-bg="За нас" data-i18n-el="Σχετικά" data-i18n-en="About" data-i18n-fr="À propos" data-i18n-nl="Over ons" href="#about">About</a><a data-i18n-bg="Ръководство" data-i18n-el="Οι επικεφαλής μας" data-i18n-en="Our leadership" data-i18n-fr="Notre direction" data-i18n-nl="Onze leiding" href="#team">Our leadership</a><a data-i18n-bg="Услуги" data-i18n-el="Υπηρεσίες" data-i18n-en="Services" data-i18n-fr="Services" data-i18n-nl="Diensten" href="#services">Services</a><a data-i18n-bg="Дигитално" data-i18n-el="Ψηφιακή λογιστική" data-i18n-en="Digital" data-i18n-fr="Numérique" data-i18n-nl="Digitaal" href="#odoo">Digital</a><a data-i18n-bg="Калкулатор" data-i18n-el="Εκτίμηση" data-i18n-en="Estimate" data-i18n-fr="Estimation" data-i18n-nl="Prijsindicatie" href="#pricing">Estimate</a><a data-i18n-bg="Контакт" data-i18n-el="Επικοινωνία" data-i18n-en="Contact" data-i18n-fr="Contact" data-i18n-nl="Contact" href="#contact">Contact</a></div><div class="copyright">© <span id="year">2026</span> Hristozov Accounting</div></div></footer>
 <script>
-    const toggle=document.querySelector('.mobile-toggle');const nav=document.querySelector('.nav-links');toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open);toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');toggle.textContent=open?'\u00d7':'\u2630'});nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');toggle.textContent='\u2630'}));document.getElementById('year').textContent=new Date().getFullYear();</script>
+    const toggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('.nav-links');
+
+    function closeNavigation() {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+      toggle.textContent = '\u2630';
+    }
+
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      toggle.textContent = open ? '\u00d7' : '\u2630';
+    });
+
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNavigation));
+
+    const languageSelect = nav.querySelector('#site-language');
+    if (languageSelect) {
+      languageSelect.addEventListener('change', closeNavigation);
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script>(function(){
 'use strict';
 const D=document,$=id=>D.getElementById(id),EMAIL='hristozov90@gmail.com';
