@@ -95,7 +95,7 @@ We still have to add a way to link back correctly to the language if user came d
       <select aria-label="Select website language / Избор на език" class="language-select" id="site-language" title="Choose website language">
         <option value="en">EN</option><option value="nl">NL</option><option value="fr">FR</option><option value="el">ΕΛ</option><option value="bg">BG</option>
       </select>
-      <a class="button" data-i18n-bg="Back to the main page" data-i18n-el="Back to the main page" data-i18n-en="Back to the main page" data-i18n-fr="Back to the main page" data-i18n-nl="Back to the main page" href="withbanner.html">Back to the main page</a>
+      <a class="button" data-i18n-bg="Back to the main page" data-i18n-el="Back to the main page" data-i18n-en="Back to the main page" data-i18n-fr="Back to the main page" data-i18n-nl="Back to the main page" href="bannerwithfaq.html">Back to the main page</a>
     </div>
   </div>
 </header>
@@ -124,7 +124,7 @@ We still have to add a way to link back correctly to the language if user came d
 </article>
       </div>
       <div class="faq-foot">
-        <a class="button button-light" data-i18n-bg="Back to the main page" data-i18n-el="Back to the main page" data-i18n-en="Back to the main page" data-i18n-fr="Back to the main page" data-i18n-nl="Back to the main page" href="withbanner.html">Back to the main page</a>
+        <a class="button button-light" data-i18n-bg="Back to the main page" data-i18n-el="Back to the main page" data-i18n-en="Back to the main page" data-i18n-fr="Back to the main page" data-i18n-nl="Back to the main page" href="bannerwithfaq.html">Back to the main page</a>
       </div>
     </div>
   </section>
@@ -153,7 +153,7 @@ link can be copied and shared.
 (function () {
   var D = document;
   var select = D.getElementById('site-language');
-  var links = D.querySelectorAll('a[href^="withbanner.html"]');
+  var links = D.querySelectorAll('a[href^="bannerwithfaq.html"]');
 
   function translate(lang) {
     D.documentElement.lang = lang;
@@ -162,7 +162,7 @@ link can be copied and shared.
       if (v !== null) node.textContent = v;
     });
     links.forEach(function (link) {
-      link.setAttribute('href', 'withbanner.html?lang=' + encodeURIComponent(lang));
+      link.setAttribute('href', 'bannerwithfaq.html?lang=' + encodeURIComponent(lang));
     });
     D.title = ({en:'FAQs | Hristozov Accounting',nl:'Veelgestelde vragen | Hristozov Accounting',fr:'Questions fréquentes | Hristozov Accounting',el:'Συχνές ερωτήσεις | Hristozov Accounting',bg:'Често задавани въпроси | Hristozov Accounting'}[lang] || 'FAQs | Hristozov Accounting');
   }
