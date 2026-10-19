@@ -295,7 +295,7 @@ function translate(next){
  lang=next;D.documentElement.lang=lang;
  D.querySelectorAll('[data-i18n-en]').forEach(node=>{const v=node.getAttribute('data-i18n-'+lang);if(v!==null)node.textContent=v});
  D.querySelectorAll('[data-placeholder-en]').forEach(node=>node.placeholder=node.getAttribute('data-placeholder-'+lang)||node.getAttribute('data-placeholder-en'));
- D.querySelector('#home h1').innerHTML={en:'Clear accounts.<br><em>Confident</em> business.',nl:'Heldere cijfers scheppen <em>gemoedsrust </em>',fr:'Des comptes clairs.<br><em>Une entreprise</em> sereine.',el:'Καθαρή εικόνα.<br><em>Σίγουρα</em> βήματα.',bg:'Ясно счетоводство.<br><em>Уверен</em> бизнес.'}[lang];
+ D.querySelector('#home h1').innerHTML={en:'Clear accounts.<br><em>Confident</em> business.',nl:'Heldere cijfers scheppen <em>vertrouwen</em> en gemoedsrust.',fr:'Des comptes clairs.<br><em>Une entreprise</em> sereine.',el:'Καθαρή εικόνα.<br><em>Σίγουρα</em> βήματα.',bg:'Ясно счетоводство.<br><em>Уверен</em> бизнес.'}[lang];
  D.title='Hristozov Accounting | '+({en:'Accounting in Bulgaria',nl:'Boekhouding in Bulgarije',fr:'Comptabilité en Bulgarie',el:'Λογιστικές υπηρεσίες στη Βουλγαρία',bg:'Счетоводни услуги в България'}[lang]);
  update();
 }
