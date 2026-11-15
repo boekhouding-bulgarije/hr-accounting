@@ -126,6 +126,23 @@
 @media(max-width:900px){.brand-option-b{--brand-size:146px}}
 @media(max-width:420px){.brand-option-b{--brand-size:128px}}
 </style>
+
+<style id="compact-section-spacing">
+/* Compact section transitions; retain existing hero top, logo and typography. */
+.section { padding-top:56px; padding-bottom:56px; }
+.hero { padding-bottom:56px; }
+.team { padding-top:56px; }
+.contact { padding-top:56px; padding-bottom:56px; }
+@media (max-width:900px) {
+  .hero { padding-bottom:38px; }
+  .team { padding-top:38px; }
+}
+@media (max-width:700px) {
+  .section { padding-top:36px; padding-bottom:36px; }
+  .team { padding-top:38px; }
+  .contact { padding-top:36px; padding-bottom:36px; }
+}
+</style>
 </head><body>
 <style>
 /* ===== Rotating top banner (full width, above sticky header) ===== */
