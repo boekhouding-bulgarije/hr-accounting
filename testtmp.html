@@ -150,6 +150,18 @@
 .field-help, .input-help, .estimate-small, .estimate-caution, .estimate-per,
 .form-note, .footer-brand small, .footer-links, .copyright { font-size: 0.875rem; }
 </style>
+
+<style>
+/* Larger navigation labels on laptop/desktop; mobile menu remains unchanged. */
+@media (min-width: 901px) {
+  .nav-links > a, .nav-links > .language-select { font-size: 15px; }
+  .nav-links { gap: 8px; }
+}
+@media (min-width: 1101px) {
+  .nav-links > a, .nav-links > .language-select { font-size: 16px; }
+  .nav-links { gap: 12px; }
+}
+</style>
 </head><body>
 <style>
 /* ===== Rotating top banner (full width, above sticky header) ===== */
